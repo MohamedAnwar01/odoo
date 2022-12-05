@@ -14,7 +14,7 @@
                 <field name="reason"/>
                 <field name="updated_value_checkin"/>
                 <field name="updated_value_checkout"/>
-                <!--                <field name="state"/>-->
+                <field name="state"/>
             </tree>
         </field>
     </record>
