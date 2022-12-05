@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Sequence for attendance.modification.request -->
+        <record id="seq_attendance_modification_request" model="ir.sequence">
+            <field name="name">Attendance Sequence</field>
+            <field name="code">attendance.modification.request</field>
+            <field name="prefix">REQ</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+    </data>
+</odoo>

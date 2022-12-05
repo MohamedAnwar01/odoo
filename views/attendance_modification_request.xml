@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_attendance_modification_request_tree" model="ir.ui.view">
+        <field name="name">attendance.modification.request.tree</field>
+        <field name="model">attendance.modification.request</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="employee"/>
+                <field name="date"/>
+                <field name="type"/>
+                <field name="attendance"/>
+                <field name="reason"/>
+                <field name="updated_value_checkin"/>
+                <field name="updated_value_checkout"/>
+                <!--                <field name="state"/>-->
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_attendance_modification_request_form" model="ir.ui.view">
+        <field name="name">attendance.modification.request.form</field>
+        <field name="model">attendance.modification.request</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button id="button_confirm" name="action_confirm" string="Confirm" class="btn-primary"
+                            states="draft" type="object"/>
+                    <button id="button_approve" name="action_approve" string="approve" class="btn-primary"
+                            states="confirm" type="object"/>
+                    <button id="button_reject" name="%(action_attendance_reject)d" string="reject"
+                            states="confirm" class="btn-primary" type="action"/>
+                    <button id="button_cancel" name="action_cancel" string="Cancel" states="draft,confirm,approve,reject"
+                            type="object"/>
+                    <button id="button_draft" name="action_draft" string="SetToDraft" class="btn-primary"
+                            states="cancel" type="object"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirm,approve"/>
+                </header>
+                <sheet>
+
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="employee"/>
+                            <field name="date"/>
+                            <field name="type"/>
+                        </group>
+                        <group>
+                            <field name="action_to_do"/>
+                            <field name="attendance" attrs="{'invisible': [('action_to_do', '=', 'new record')]}"/>
+                            <field name="updated_value_checkin"/>
+                            <field name="updated_value_checkout"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="reason"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="action_attendance_modification_request" model="ir.actions.act_window">
+        <field name="name">Attendance Modification Request</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">attendance.modification.request</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create Your First Attendance!
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_attendance_root"
+              name="attendances"
+              sequence="10"/>
+
+    <menuitem id="menu_attendance_modification_root"
+              name="Attendance"
+              parent="menu_attendance_root"
+              sequence="10"/>
+
+    <menuitem id="menu_attendance"
+              name="Attendance"
+              parent="menu_attendance_modification_root"
+              action="action_attendance_modification_request"
+              sequence="10"/>
+
+
+</odoo>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

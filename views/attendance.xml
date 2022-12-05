@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="menu_attendance"
+              name="Attendance"
+              parent="hr_attendance.menu_hr_attendance_root"
+              sequence="20"
+              action="action_attendance_modification_request"/>
+
+
+</odoo>
